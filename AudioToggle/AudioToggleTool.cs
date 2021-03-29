@@ -19,8 +19,8 @@ namespace AudioToggle
 
         public string[] ValidProperties => new string[] { "Toggle output device 1", "Toggle input device 1", "Toggle output device 2", "Toggle input device 2", "List audio devices"};
 
-        int[] OutputDevices = new int[] { -1, -1 };
-        int[] InputDevices = new int[] { -1, -1 };
+        int[] OutputDevices = new int[2];
+        int[] InputDevices = new int[2];
 
         public bool Initialize()
         {
@@ -60,26 +60,28 @@ namespace AudioToggle
 
         void RunAction()
         {
+            string s = OutputDevices[0] + " | " + OutputDevices[1] + " | " + InputDevices[0] + " | " + InputDevices[1];
+            Log.Write("AudioToggle", s);
             switch (Property)
             {
                 case "Toggle output device 1":
                     {
-                        Instance.ToggleOutputDevice(OutputDevice1);
+                        Instance.ToggleOutputDevice(OutputDevices[0]);
                         break;
                     }
                 case "Toggle input device 1":
                     {
-                        Instance.ToggleInputDevice(InputDevice1);
+                        Instance.ToggleInputDevice(OutputDevices[0]);
                         break;
                     }
                 case "Toggle output device 2":
                     {
-                        Instance.ToggleOutputDevice(OutputDevice2);
+                        Instance.ToggleOutputDevice(OutputDevices[1]);
                         break;
                     }
                 case "Toggle input device 2":
                     {
-                        Instance.ToggleInputDevice(InputDevice2);
+                        Instance.ToggleInputDevice(OutputDevices[1]);
                         break;
                     }
                 case "List audio devices":

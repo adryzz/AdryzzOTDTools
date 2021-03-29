@@ -17,8 +17,8 @@ namespace AudioToggle
 
         public void Dispose()
         {
+            controller.Dispose();
             Disposed = true;
-            
         }
 
         public bool Initialize()
@@ -48,6 +48,7 @@ namespace AudioToggle
 
         public void ToggleOutputDevice(int index)
         {
+            Log.Write("AudioToggle", "Toggle mute for " + index);
             if (index < 0)
             {
                 controller.DefaultPlaybackDevice.ToggleMute();
@@ -60,6 +61,7 @@ namespace AudioToggle
 
         public void ToggleInputDevice(int index)
         {
+            Log.Write("AudioToggle", "Toggle mute for " + index);
             if (index < 0)
             {
                 controller.DefaultCaptureDevice.ToggleMute();
