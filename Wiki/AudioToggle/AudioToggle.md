@@ -1,5 +1,5 @@
 AudioToggle is a plugin that allows you to mute/unmute audio devices using your tablet buttons
-Currently it supports Windows and Linux.
+Currently it supports [Windows](https://github.com/adryzz/AdryzzOTDTools/wiki/AudioToggle-configuration#windows) and [Linux](https://github.com/adryzz/AdryzzOTDTools/wiki/AudioToggle-configuration#linux).
 ## Windows
 After installing the plugin you can either:
 * Only mute the default device
