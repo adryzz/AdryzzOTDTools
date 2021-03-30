@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AudioToggle", "AudioToggle"
 	ProjectSection(SolutionItems) = preProject
 		Wiki\AudioToggle\AudioToggle.md = Wiki\AudioToggle\AudioToggle.md
 		Wiki\AudioToggle\img0.png = Wiki\AudioToggle\img0.png
+		Wiki\AudioToggle\img1.png = Wiki\AudioToggle\img1.png
+		Wiki\AudioToggle\img2.png = Wiki\AudioToggle\img2.png
 	EndProjectSection
 EndProject
 Global

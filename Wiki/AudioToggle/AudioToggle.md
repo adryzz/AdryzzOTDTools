@@ -4,7 +4,21 @@ Currently it supports Windows and Linux.
 After installing the plugin you can either:
 * Only mute the default device
 
+Go into `Bindings` and set a button binding as follows.
+![](https://github.com/adryzz/AdryzzOTDTools/blob/master/Wiki/AudioToggle/img0.png?raw=true)
+
 * Mute any device.
+First of all, we need to know the list of devices connected.
+
+Go into `Bindings` and set a button binding as follows.
+
+Press the button. You should see the list of devices in the `Console` tab.
+
+Find the device you want, and keep in mind its device index (the device number)
+
+Go on the `Tools` tab and change the device indices from `-1` to what you chose.
+
+Now you can remove the `List audio devices` binding we set earlier
 
 ## Linux
-Linux currently only supports toggling the `Master` and `Capture` mixers through alsamixer.
+Linux currently only supports toggling the `Master` and `Capture` mixers through alsamixer and it's really buggy.
