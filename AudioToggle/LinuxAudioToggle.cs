@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using OpenTabletDriver.Plugin;
 
 namespace AudioToggle
 {
@@ -31,11 +32,11 @@ namespace AudioToggle
 
         public void ToggleOutputDevice(int index)
         {
-            OpenTabletDriver.Plugin.Log.Write("AudioToggle", "Toggle output Device" + index);
+            Log.Write("AudioToggle", "Toggle output Device" + index, LogLevel.Debug);
             if (index < 0)
             {
                 string output = ExecuteCommand("amixer sget 'Master'");
-                OpenTabletDriver.Plugin.Log.Write("Plugin", output);
+                Log.Write("Plugin", output, LogLevel.Debug);
                 if (output.Contains("[on]"))
                 {
                     ExecuteCommand("amixer sset 'Master' off");
@@ -49,11 +50,11 @@ namespace AudioToggle
 
         public void ToggleInputDevice(int index)
         {
-            OpenTabletDriver.Plugin.Log.Write("Plugin", "Toggle input Device" + index);
+            Log.Write("Plugin", "Toggle input Device" + index, LogLevel.Debug);
             if (index < 0)
             {
                 string output = ExecuteCommand("amixer sget 'Capture'");
-                OpenTabletDriver.Plugin.Log.Write("Plugin", output);
+                Log.Write("Plugin", output, LogLevel.Debug);
                 if (output.Contains("[on]"))
                 {
                     ExecuteCommand("amixer sset 'Capture' off");
