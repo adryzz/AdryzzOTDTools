@@ -28,7 +28,7 @@ namespace AudioToggle
             return true;
         }
 
-        public string ListDevices()
+        public void ListDevices()
         {
             try
             {
@@ -49,11 +49,11 @@ namespace AudioToggle
                 {
                     c += string.Format("Device {0}: {1}\n", i, capture[i].FullName);
                 }
-                return p + c;
+                Log.Write("AudioToggle", p + c);
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                Log.Exception(ex);
             }
         }
 
@@ -77,9 +77,9 @@ namespace AudioToggle
                 dev.ToggleMute();
                 Log.Write("AudioToggle", "Toggle mute for " + dev.FullName, LogLevel.Debug);
             }
-            catch
+            catch(Exception ex)
             {
-
+                Log.Exception(ex);
             }
         }
 
@@ -103,9 +103,9 @@ namespace AudioToggle
                 dev.ToggleMute();
                 Log.Write("AudioToggle", "Toggle mute for " + dev.FullName, LogLevel.Debug);
             }
-            catch
+            catch (Exception ex)
             {
-
+                Log.Exception(ex);
             }
         }
     }

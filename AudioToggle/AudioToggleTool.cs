@@ -89,7 +89,7 @@ namespace AudioToggle
                     }
                 case "List audio devices":
                     {
-                        Log.Write("AudioToggle", Instance.ListDevices());
+                        Instance.ListDevices();
                         break;
                     }
             }

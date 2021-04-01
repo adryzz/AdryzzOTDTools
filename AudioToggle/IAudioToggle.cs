@@ -14,7 +14,7 @@ namespace AudioToggle
         void ToggleOutputDevice(int index);
         void ToggleInputDevice(int index);
 
-        string ListDevices();
+        void ListDevices();
 
         bool Disposed { get; set; }
     }

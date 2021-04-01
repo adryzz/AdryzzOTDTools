@@ -25,7 +25,7 @@ namespace AudioToggle
             return true;
         }
 
-        public string ListDevices()
+        public void ListDevices()
         {
             throw new NotImplementedException();
         }
