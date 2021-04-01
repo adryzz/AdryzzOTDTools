@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using OpenTabletDriver.Plugin;
 using OpenTabletDriver.Plugin.Attributes;
 
@@ -29,33 +30,28 @@ namespace AudioToggle
 
         public bool Initialize()
         {
+            new Thread(new ThreadStart(InitializeAsync)).Start();
+            return true;
+        }
+
+        void InitializeAsync()
+        {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Log.Write("AudioToggle", "Initializing Windows audio toggle");
-                if (Instance != null && Instance.Initialized && !Instance.Disposed)
-                {
-                    return true;
-                }
-                else
+                if (Instance == null || Instance.Disposed)
                 {
                     Instance = new WindowsAudioToggle();
-                    return Instance.Initialize();
+                    Instance.Initialize();
                 }
             }
             else
             {
-                Log.Write("AudioToggle", "Initializing Linux audio toggle");
-                if (Instance != null && Instance.Initialized && !Instance.Disposed)
-                {
-                    return true;
-                }
-                else
+                if (Instance == null || Instance.Disposed)
                 {
                     Instance = new LinuxAudioToggle();
-                    return Instance.Initialize();
+                    Instance.Initialize();
                 }
             }
-
         }
 
         public void Dispose()
