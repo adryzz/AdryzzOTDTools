@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using OpenTabletDriver.Plugin;
 
-namespace AudioToggle
+namespace AudioToggle.Platforms.Linux
 {
     class LinuxAudioToggle : IAudioToggle
     {
@@ -35,15 +35,15 @@ namespace AudioToggle
             Log.Write("AudioToggle", "Toggle output Device" + index, LogLevel.Debug);
             if (index < 0)
             {
-                string output = ExecuteCommand("amixer sget 'Master'");
+                string output = ShellHelper.Bash("amixer sget 'Master'");
                 Log.Write("Plugin", output, LogLevel.Debug);
                 if (output.Contains("[on]"))
                 {
-                    ExecuteCommand("amixer sset 'Master' off");
+                    ShellHelper.Bash("amixer sset 'Master' off");
                 }
                 else
                 {
-                    ExecuteCommand("amixer sset 'Master' on");
+                    ShellHelper.Bash("amixer sset 'Master' on");
                 }
             }
         }
@@ -53,36 +53,17 @@ namespace AudioToggle
             Log.Write("Plugin", "Toggle input Device" + index, LogLevel.Debug);
             if (index < 0)
             {
-                string output = ExecuteCommand("amixer sget 'Capture'");
+                string output = ShellHelper.Bash("amixer sget 'Capture'");
                 Log.Write("Plugin", output, LogLevel.Debug);
                 if (output.Contains("[on]"))
                 {
-                    ExecuteCommand("amixer sset 'Capture' off");
+                    ShellHelper.Bash("amixer sset 'Capture' off");
                 }
                 else
                 {
-                    ExecuteCommand("amixer sset 'Capture' on");
+                    ShellHelper.Bash("amixer sset 'Capture' on");
                 }
             }
-        }
-
-        string ExecuteCommand(string command)
-        {
-            var escapedArgs = command.Replace("\"", "\\\"");
-            var process = new Process()
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "/bin/bash",
-                    Arguments = $"-c \"aplay {escapedArgs}\"",
-                    RedirectStandardOutput = true,
-                    RedirectStandardInput = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                }
-            };
-            process.Start();
-            return process.StandardOutput.ReadToEnd();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using AudioToggle.Platforms.Linux;
+using AudioToggle.Platforms.Windows;
 using OpenTabletDriver.Plugin;
 using OpenTabletDriver.Plugin.Attributes;
 

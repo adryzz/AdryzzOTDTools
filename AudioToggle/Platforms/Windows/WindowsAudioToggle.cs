@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AudioSwitcher.AudioApi.CoreAudio;
 using OpenTabletDriver.Plugin;
 
-namespace AudioToggle
+namespace AudioToggle.Platforms.Windows
 {
     class WindowsAudioToggle : IAudioToggle
     {
