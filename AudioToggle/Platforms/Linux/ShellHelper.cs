@@ -13,7 +13,7 @@ public static class ShellHelper
         {
             StartInfo = new ProcessStartInfo
             {
-                FileName = "bash",
+                FileName = "/usr/bin/env bash",
                 Arguments = $"-c \"{escapedArgs}\"",
                 RedirectStandardOutput = true,
                 UseShellExecute = false,

@@ -15,9 +15,9 @@ namespace AudioToggle
 
         public Action Press => (Action)RunAction;
 
-        public Action Release => (Action)(() => { });
+        public Action Release => (Action)StopAction;
 
-        public string[] ValidProperties => new string[] { "Toggle output device 1", "Toggle input device 1", "Toggle output device 2", "Toggle input device 2", "List audio devices" };
+        public string[] ValidProperties => new string[] { "Toggle output device 1", "PTT output device 1", "Toggle input device 1", "PTT input device 1", "Toggle output device 2", "PTT output device 2", "Toggle input device 2", "PTT input device 2", "List audio devices" };
 
         void RunAction()
         {
@@ -34,7 +34,17 @@ namespace AudioToggle
                         AudioToggleTool.Instance.ToggleOutputDevice(AudioToggleTool.OutputDevices[0]);
                         break;
                     }
+                case "PTT output device 1":
+                    {
+                        AudioToggleTool.Instance.ToggleOutputDevice(AudioToggleTool.InputDevices[0]);
+                        break;
+                    }
                 case "Toggle input device 1":
+                    {
+                        AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[0]);
+                        break;
+                    }
+                case "PTT input device 1":
                     {
                         AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[0]);
                         break;
@@ -44,7 +54,17 @@ namespace AudioToggle
                         AudioToggleTool.Instance.ToggleOutputDevice(AudioToggleTool.OutputDevices[1]);
                         break;
                     }
+                case "PTT output device 2":
+                    {
+                        AudioToggleTool.Instance.ToggleOutputDevice(AudioToggleTool.InputDevices[1]);
+                        break;
+                    }
                 case "Toggle input device 2":
+                    {
+                        AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[1]);
+                        break;
+                    }
+                case "PTT input device 2":
                     {
                         AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[1]);
                         break;
@@ -52,6 +72,38 @@ namespace AudioToggle
                 case "List audio devices":
                     {
                         AudioToggleTool.Instance.ListDevices();
+                        break;
+                    }
+            }
+        }
+        void StopAction()
+        {
+            if (AudioToggleTool.Instance == null || AudioToggleTool.Instance.Disposed)
+            {
+                Log.Write("AudioToggle", "Tool instance not initialized", LogLevel.Error);
+                return;
+            }
+
+            switch (Property)
+            {
+                case "PTT output device 1":
+                    {
+                        AudioToggleTool.Instance.ToggleOutputDevice(AudioToggleTool.InputDevices[0]);
+                        break;
+                    }
+                case "PTT input device 1":
+                    {
+                        AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[0]);
+                        break;
+                    }
+                case "PTT output device 2":
+                    {
+                        AudioToggleTool.Instance.ToggleOutputDevice(AudioToggleTool.InputDevices[1]);
+                        break;
+                    }
+                case "PTT input device 2":
+                    {
+                        AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[1]);
                         break;
                     }
             }
