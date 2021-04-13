@@ -8,7 +8,7 @@ using OpenTabletDriver.Plugin.Attributes;
 
 namespace AudioToggle
 {
-    [PluginName("Audio Toggle Configuration"), SupportedPlatform(PluginPlatform.Windows | PluginPlatform.Linux)]
+    [PluginName("Audio Toggle Configuration"), SupportedPlatform(PluginPlatform.Windows /*| PluginPlatform.Linux*/)]
     public class AudioToggleTool : ITool
     {
         public static IAudioToggle Instance;

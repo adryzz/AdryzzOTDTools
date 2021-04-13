@@ -6,7 +6,7 @@ using OpenTabletDriver.Plugin.Attributes;
 
 namespace AudioToggle
 {
-    [PluginName("Audio Toggle"), SupportedPlatform(PluginPlatform.Windows | PluginPlatform.Linux)]
+    [PluginName("Audio Toggle"), SupportedPlatform(PluginPlatform.Windows /*| PluginPlatform.Linux*/)]
     public class AudioToggleBinding : IValidateBinding, IBinding
     {
 
