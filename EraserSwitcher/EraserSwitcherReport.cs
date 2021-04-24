@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EraserSwitcher
 {
-    class EraserSwitcherReport : IEraserReport, ITabletReport
+    public class EraserSwitcherReport : IEraserReport, ITabletReport
     {
         public bool Eraser { get; set; }
         public uint ReportID { get; set; }

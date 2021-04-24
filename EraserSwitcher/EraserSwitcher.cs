@@ -9,8 +9,8 @@ using OpenTabletDriver.Plugin.Tablet;
 
 namespace EraserSwitcher
 {
-    [PluginName("Eraser Switcher Filter")]
-    class EraserSwitcher : IPositionedPipelineElement<IDeviceReport>
+    [PluginName("Eraser Switcher")]
+    public class EraserSwitcher : IPositionedPipelineElement<IDeviceReport>
     {
         public PipelinePosition Position => PipelinePosition.Raw;
 

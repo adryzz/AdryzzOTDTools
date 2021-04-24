@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace EraserSwitcher
 {
     [PluginName("Eraser Switcher")]
-    class EraserSwitcherBinding : IBinding
+    public class EraserSwitcherBinding : IBinding
     {
         public void Press(IDeviceReport report)
         {
