@@ -7,7 +7,7 @@ using OpenTabletDriver.Plugin.Attributes;
 using OpenTabletDriver.Plugin.Output;
 using OpenTabletDriver.Plugin.Tablet;
 
-namespace OTDTestFilter
+namespace EraserSwitcher
 {
     [PluginName("Eraser Switcher Filter")]
     class EraserSwitcher : IPositionedPipelineElement<IDeviceReport>

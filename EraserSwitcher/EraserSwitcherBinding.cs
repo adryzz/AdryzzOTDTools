@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OTDTestFilter
+namespace EraserSwitcher
 {
     [PluginName("Eraser Switcher")]
     class EraserSwitcherBinding : IBinding
