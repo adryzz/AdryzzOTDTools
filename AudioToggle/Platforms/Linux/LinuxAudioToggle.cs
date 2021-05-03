@@ -65,5 +65,15 @@ namespace AudioToggle.Platforms.Linux
                 }
             }
         }
+
+        public void SetDefaultOutputDevice(int index)
+        {
+            
+        }
+
+        public void SetDefaultInputDevice(int index)
+        {
+            
+        }
     }
 }

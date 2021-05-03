@@ -108,5 +108,57 @@ namespace AudioToggle.Platforms.Windows
                 Log.Exception(ex);
             }
         }
+
+        public void SetDefaultOutputDevice(int index)
+        {
+            try
+            {
+                if (controller == null)
+                {
+                    Initialize();
+                }
+                CoreAudioDevice dev;
+                if (index < 0)
+                {
+                    return;
+                }
+                else
+                {
+                    dev = controller.GetPlaybackDevices().ToArray()[index];
+                }
+                dev.SetAsDefault();
+                Log.Write("AudioToggle", "Set device " + dev.FullName + " as default output device.", LogLevel.Debug);
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+            }
+        }
+
+        public void SetDefaultInputDevice(int index)
+        {
+            try
+            {
+                if (controller == null)
+                {
+                    Initialize();
+                }
+                CoreAudioDevice dev;
+                if (index < 0)
+                {
+                    return;
+                }
+                else
+                {
+                    dev = controller.GetCaptureDevices().ToArray()[index];
+                }
+                dev.SetAsDefault();
+                Log.Write("AudioToggle", "Set device " + dev.FullName + " as default input device.", LogLevel.Debug);
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+            }
+        }
     }
 }

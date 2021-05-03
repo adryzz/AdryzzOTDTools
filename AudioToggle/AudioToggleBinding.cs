@@ -12,7 +12,7 @@ namespace AudioToggle
     [PluginName("Audio Toggle"), SupportedPlatform(PluginPlatform.Windows /*| PluginPlatform.Linux*/)]
     public class AudioToggleBinding : IBinding
     {
-        public static string[] ValidProperties => new string[] { "Toggle output device 1", "PTT output device 1", "Toggle input device 1", "PTT input device 1", "Toggle output device 2", "PTT output device 2", "Toggle input device 2", "PTT input device 2", "List audio devices" };
+        public static string[] ValidProperties => new string[] { "Toggle output device 1", "PTT output device 1", "Set default output device 1", "Toggle input device 1", "PTT input device 1", "Set default input device 1", "Toggle output device 2", "PTT output device 2", "Set default output device 2", "Toggle input device 2", "PTT input device 2", "Set default input device 2", "List audio devices" };
 
         [Property("Action"), PropertyValidated(nameof(ValidProperties))]
         public string Property { set; get; }
@@ -51,8 +51,13 @@ namespace AudioToggle
                     }
                 case "PTT output device 1":
                     {
-                        Instance.ToggleOutputDevice(InputDevices[0]);
+                        Instance.ToggleOutputDevice(OutputDevices[0]);
                         break;
+                    }
+                case "Set default output device 1":
+                    {
+                        Instance.ToggleOutputDevice(OutputDevices[0]);
+                        return;
                     }
                 case "Toggle input device 1":
                     {
@@ -64,6 +69,11 @@ namespace AudioToggle
                         Instance.ToggleInputDevice(InputDevices[0]);
                         break;
                     }
+                case "Set default input device 1":
+                    {
+                        Instance.ToggleInputDevice(InputDevices[0]);
+                        return;
+                    }
                 case "Toggle output device 2":
                     {
                         Instance.ToggleOutputDevice(OutputDevices[1]);
@@ -71,8 +81,13 @@ namespace AudioToggle
                     }
                 case "PTT output device 2":
                     {
-                        Instance.ToggleOutputDevice(InputDevices[1]);
+                        Instance.ToggleOutputDevice(OutputDevices[1]);
                         break;
+                    }
+                case "Set default output device 2":
+                    {
+                        Instance.ToggleOutputDevice(OutputDevices[1]);
+                        return;
                     }
                 case "Toggle input device 2":
                     {
@@ -83,6 +98,11 @@ namespace AudioToggle
                     {
                         Instance.ToggleInputDevice(InputDevices[1]);
                         break;
+                    }
+                case "Set default input device 2":
+                    {
+                        Instance.ToggleInputDevice(InputDevices[1]);
+                        return;
                     }
                 case "List audio devices":
                     {
