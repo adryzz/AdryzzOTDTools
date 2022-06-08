@@ -65,5 +65,14 @@ namespace AudioToggle.Platforms.Linux
                 }
             }
         }
+        public void ChangeOutputDevice(int Standard, int Comms)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChangeInputDevice(int Standard, int Comms)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

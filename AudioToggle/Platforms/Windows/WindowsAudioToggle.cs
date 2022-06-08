@@ -108,5 +108,78 @@ namespace AudioToggle.Platforms.Windows
                 Log.Exception(ex);
             }
         }
+
+        public void ChangeOutputDevice(int Standard, int Comms)
+        {
+            try
+            {
+                if (controller == null)
+                {
+                    Initialize();
+                }
+                CoreAudioDevice devStandard;
+                CoreAudioDevice devComms;
+                if (Standard < 0)
+                {
+                    devStandard = controller.DefaultPlaybackDevice;
+                }
+                else
+                {
+                    devStandard = controller.GetPlaybackDevices().ToArray()[Standard];
+                }
+                if (Comms < 0)
+                {
+                    devComms = controller.DefaultPlaybackDevice;
+                }
+                else
+                {
+                    devComms = controller.GetPlaybackDevices().ToArray()[Comms];
+                }
+                devStandard.SetAsDefault();
+                devComms.SetAsDefaultCommunications();
+                Log.Write("AudioToggle", "Set standard output device to " + devStandard.FullName, LogLevel.Debug);
+                Log.Write("AudioToggle", "Set comms output device to " + devComms.FullName, LogLevel.Debug);
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+            }
+        }
+        public void ChangeInputDevice(int Standard, int Comms)
+        {
+            try
+            {
+                if (controller == null)
+                {
+                    Initialize();
+                }
+                CoreAudioDevice devStandard;
+                CoreAudioDevice devComms;
+                if (Standard < 0)
+                {
+                    devStandard = controller.DefaultCaptureDevice;
+                }
+                else
+                {
+                    devStandard = controller.GetCaptureDevices().ToArray()[Standard];
+                }
+                if (Comms < 0)
+                {
+                    devComms = controller.DefaultCaptureDevice;
+                }
+                else
+                {
+                    devComms = controller.GetCaptureDevices().ToArray()[Comms];
+                }
+                devStandard.SetAsDefault();
+                devComms.SetAsDefaultCommunications();
+                Log.Write("AudioToggle", "Set standard input device to " + devStandard.FullName, LogLevel.Debug);
+                Log.Write("AudioToggle", "Set comms input device to " + devComms.FullName, LogLevel.Debug);
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+            }
+        }
     }
 }
