@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="AudioSwitcher.AudioApi" Version="3.0.0" />
     <PackageReference Include="AudioSwitcher.AudioApi.CoreAudio" Version="3.0.0.1" />
-    <PackageReference Include="OpenTabletDriver.Plugin" Version="0.5.2.3" />
+    <PackageReference Include="OpenTabletDriver.Plugin" Version="0.6.0.2" />
   </ItemGroup>
 
 </Project>
