@@ -3,21 +3,31 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using OpenTabletDriver.Plugin;
 using OpenTabletDriver.Plugin.Attributes;
+using OpenTabletDriver.Plugin.Tablet;
 
 namespace AudioToggle
 {
     [PluginName("Audio Toggle"), SupportedPlatform(PluginPlatform.Windows /*| PluginPlatform.Linux*/)]
-    public class AudioToggleBinding : IValidateBinding, IBinding
+    public class AudioToggleBinding : IStateBinding, IBinding
     {
 
-        [Property("Property")]
+        [Property("Property"), PropertyValidated(nameof(ValidProperties))]
         public string Property { get; set; }
 
-        public Action Press => (Action)RunAction;
+        public void Press(TabletReference tablet, IDeviceReport report)
+        {
+            RunAction();
+            return;
+        }
 
-        public Action Release => (Action)StopAction;
+        public void Release(TabletReference tablet, IDeviceReport report)
+        {
+            StopAction();
+            return;
+        }
+        
 
-        public string[] ValidProperties => new string[] { "Toggle output device 1", "PTT output device 1", "Toggle input device 1", "PTT input device 1", "Toggle output device 2", "PTT output device 2", "Toggle input device 2", "PTT input device 2", "List audio devices" };
+        public static string[] ValidProperties { get; } = new string[] { "Toggle output device 1", "PTT output device 1", "Toggle input device 1", "PTT input device 1", "Toggle output device 2", "PTT output device 2", "Toggle input device 2", "PTT input device 2", "List audio devices" };
 
         void RunAction()
         {

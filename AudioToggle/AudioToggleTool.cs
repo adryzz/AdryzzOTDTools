@@ -61,7 +61,7 @@ namespace AudioToggle
         [Property("Output device 2 index"), DefaultPropertyValue(-1)]
         public int OutputDevice2 { get => OutputDevices[1]; set => OutputDevices[1] = value; }
 
-        [Property("Input device 1 index"), DefaultPropertyValue(-1)]
+        [Property("Input device 2 index"), DefaultPropertyValue(-1)]
         public int InputDevice2 { get => InputDevices[1]; set => InputDevices[1] = value; }
     }
 }
