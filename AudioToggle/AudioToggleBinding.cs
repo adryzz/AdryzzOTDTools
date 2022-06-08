@@ -61,12 +61,12 @@ namespace AudioToggle
                     }
                 case "Change output device 1":
                     {
-                        AudioToggleTool.Instance.ChangeOutputDevice(AudioToggleTool.ChangeOutputDevices[0]);
+                        AudioToggleTool.Instance.ChangeOutputDevice(AudioToggleTool.ChangeStandardOutputDevices[0], AudioToggleTool.ChangeCommsOutputDevices[0]);
                         break;
                     }
                 case "Change output device 2":
                     {
-                        AudioToggleTool.Instance.ChangeOutputDevice(AudioToggleTool.ChangeOutputDevices[1]);
+                        AudioToggleTool.Instance.ChangeOutputDevice(AudioToggleTool.ChangeStandardOutputDevices[1], AudioToggleTool.ChangeCommsOutputDevices[1]);
                         break;
                     }
                 case "Toggle input device 1":
@@ -91,12 +91,12 @@ namespace AudioToggle
                     }
                 case "Change input device 1":
                     {
-                        AudioToggleTool.Instance.ChangeInputDevice(AudioToggleTool.ChangeOutputDevices[0]);
+                        AudioToggleTool.Instance.ChangeInputDevice(AudioToggleTool.ChangeStandardInputDevices[0], AudioToggleTool.ChangeCommsInputDevices[0]);
                         break;
                     }
                 case "Change input device 2":
                     {
-                        AudioToggleTool.Instance.ChangeInputDevice(AudioToggleTool.ChangeOutputDevices[1]);
+                        AudioToggleTool.Instance.ChangeInputDevice(AudioToggleTool.ChangeStandardInputDevices[1], AudioToggleTool.ChangeCommsInputDevices[1]);
                         break;
                     }
                 case "List audio devices":
@@ -126,14 +126,14 @@ namespace AudioToggle
                         AudioToggleTool.Instance.ToggleOutputDevice(AudioToggleTool.InputDevices[1]);
                         break;
                     }
-                case "PTT input device 1":
-                    {
-                        AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[0]);
-                        break;
-                    }
                 case "PTT input device 2":
                     {
                         AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[1]);
+                        break;
+                    }
+                case "PTT input device 1":
+                    {
+                        AudioToggleTool.Instance.ToggleInputDevice(AudioToggleTool.InputDevices[0]);
                         break;
                     }
             }

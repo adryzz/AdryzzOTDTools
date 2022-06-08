@@ -14,8 +14,8 @@ namespace AudioToggle
         void ToggleOutputDevice(int index);
         void ToggleInputDevice(int index);
 
-        void ChangeOutputDevice(int index);
-        void ChangeInputDevice (int index);
+        void ChangeOutputDevice(int Standard, int Comms);
+        void ChangeInputDevice(int Standard, int Comms);
 
         void ListDevices();
 

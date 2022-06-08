@@ -109,7 +109,7 @@ namespace AudioToggle.Platforms.Windows
             }
         }
 
-        public void ChangeOutputDevice(int index)
+        public void ChangeOutputDevice(int Standard, int Comms)
         {
             try
             {
@@ -117,24 +117,35 @@ namespace AudioToggle.Platforms.Windows
                 {
                     Initialize();
                 }
-                CoreAudioDevice dev;
-                if (index < 0)
+                CoreAudioDevice devStandard;
+                CoreAudioDevice devComms;
+                if (Standard < 0)
                 {
-                    dev = controller.DefaultCaptureDevice;
+                    devStandard = controller.DefaultPlaybackDevice;
                 }
                 else
                 {
-                    dev = controller.GetPlaybackDevices().ToArray()[index];
+                    devStandard = controller.GetPlaybackDevices().ToArray()[Standard];
                 }
-                dev.SetAsDefault();
-                Log.Write("AudioToggle", "Set output device to " + dev.FullName, LogLevel.Debug);
+                if (Comms < 0)
+                {
+                    devComms = controller.DefaultPlaybackDevice;
+                }
+                else
+                {
+                    devComms = controller.GetPlaybackDevices().ToArray()[Comms];
+                }
+                devStandard.SetAsDefault();
+                devComms.SetAsDefaultCommunications();
+                Log.Write("AudioToggle", "Set standard output device to " + devStandard.FullName, LogLevel.Debug);
+                Log.Write("AudioToggle", "Set comms output device to " + devComms.FullName, LogLevel.Debug);
             }
             catch (Exception ex)
             {
                 Log.Exception(ex);
             }
         }
-        public void ChangeInputDevice(int index)
+        public void ChangeInputDevice(int Standard, int Comms)
         {
             try
             {
@@ -142,17 +153,28 @@ namespace AudioToggle.Platforms.Windows
                 {
                     Initialize();
                 }
-                CoreAudioDevice dev;
-                if (index < 0)
+                CoreAudioDevice devStandard;
+                CoreAudioDevice devComms;
+                if (Standard < 0)
                 {
-                    dev = controller.DefaultCaptureDevice;
+                    devStandard = controller.DefaultCaptureDevice;
                 }
                 else
                 {
-                    dev = controller.GetCaptureDevices().ToArray()[index];
+                    devStandard = controller.GetCaptureDevices().ToArray()[Standard];
                 }
-                dev.SetAsDefault();
-                Log.Write("AudioToggle", "Set input device to " + dev.FullName, LogLevel.Debug);
+                if (Comms < 0)
+                {
+                    devComms = controller.DefaultCaptureDevice;
+                }
+                else
+                {
+                    devComms = controller.GetCaptureDevices().ToArray()[Comms];
+                }
+                devStandard.SetAsDefault();
+                devComms.SetAsDefaultCommunications();
+                Log.Write("AudioToggle", "Set standard input device to " + devStandard.FullName, LogLevel.Debug);
+                Log.Write("AudioToggle", "Set comms input device to " + devComms.FullName, LogLevel.Debug);
             }
             catch (Exception ex)
             {
